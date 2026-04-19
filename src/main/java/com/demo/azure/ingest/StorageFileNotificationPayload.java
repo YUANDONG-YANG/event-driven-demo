@@ -2,7 +2,10 @@ package com.demo.azure.ingest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/** JSON 正文字段约定；由 {@link com.demo.azure.storage.LocalStorageFileNotificationFactory} 构造并与本类对齐。 */
+/**
+ * JSON body field contract; built by {@link com.demo.azure.storage.LocalStorageFileNotificationFactory} and aligned with
+ * this type.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StorageFileNotificationPayload {
 

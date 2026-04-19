@@ -1,4 +1,4 @@
 /**
- * Spring 配置与类型安全的配置属性（{@code AzureDemoProperties}、{@code StorageProperties}、OpenAPI 等）。
+ * Spring configuration and type-safe properties ({@code AzureDemoProperties}, {@code StorageProperties}, OpenAPI, etc.).
  */
 package com.demo.azure.config;

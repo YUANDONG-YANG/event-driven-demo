@@ -1,4 +1,4 @@
 /**
- * 概念说明数据结构（供 {@code web} 层 JSON 返回），无业务副作用。
+ * Concept reference data structures for JSON responses from the web layer; no business side effects.
  */
 package com.demo.azure.review;

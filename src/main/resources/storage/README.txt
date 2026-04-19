@@ -12,4 +12,4 @@ End-to-end (local demo):
 
 Config files: application.yaml (shared), application-local.yaml (profile local), application-cloud.yaml (profile cloud).
 
-云上标准路径：Blob 上传 -> Event Grid ->（订阅）-> Service Bus -> 你的消费者。
+Cloud-native path: Blob upload -> Event Grid -> (subscription) -> Service Bus -> your consumer.

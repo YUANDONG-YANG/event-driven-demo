@@ -1,4 +1,5 @@
 /**
- * Azure Service Bus：发送端与消费端 Bean、出站监听器、入站消息处理（与 {@code ingest} 协作）；配置类仅负责装配 SDK 客户端。
+ * Azure Service Bus: sender and processor beans, outbound listeners, inbound message handling (with {@code ingest});
+ * configuration classes only wire SDK clients.
  */
 package com.demo.azure.servicebus;

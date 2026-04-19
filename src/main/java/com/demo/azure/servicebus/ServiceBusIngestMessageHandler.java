@@ -11,7 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Service Bus 处理器回调：日志、trace、委托落库、完成/放弃消息。与 {@link ServiceBusProcessorConfig} 的 Bean 装配职责分离（单一职责）。
+ * Service Bus processor callbacks: logging, trace, delegate persistence, complete/abandon. Kept separate from
+ * {@link ServiceBusProcessorConfig} bean wiring (single responsibility).
  */
 @Component
 public class ServiceBusIngestMessageHandler {

@@ -1,4 +1,5 @@
 /**
- * Service Bus 消费落库：实体与仓库、JSON 载荷模型、trace 解析、持久化应用服务；查询 API 在同一包内。
+ * Service Bus consumption and persistence: entities and repositories, JSON payload model, trace resolution,
+ * application service; query API lives in the same package.
  */
 package com.demo.azure.ingest;

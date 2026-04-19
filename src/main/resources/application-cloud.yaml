@@ -1,13 +1,13 @@
 # =============================================================================
-# Profile: cloud — Azure 或其它部署环境（依赖环境变量 / Key Vault 注入）
+# Profile: cloud — Azure or other deployments (env vars / Key Vault injection)
 # =============================================================================
-# 启动示例：spring.profiles.active=cloud
-# 必填（示例名，按实际密钥保管方式配置）：
+# Startup example: spring.profiles.active=cloud
+# Required (names are examples; use your secret store):
 #   SPRING_DATASOURCE_URL / USERNAME / PASSWORD
-#   REDIS_HOST（及密码若需要，另配 spring.data.redis.password）
-#   AZURE_EVENTGRID_TOPIC_ENDPOINT、AZURE_EVENTGRID_TOPIC_KEY（若启用 Grid）
-#   AZURE_SERVICEBUS_CONNECTION_STRING、AZURE_SERVICEBUS_ENTITY
-# 存储根路径建议指向挂载卷或仅使用 Blob，不用本机 F: 路径：
+#   REDIS_HOST (and password if needed via spring.data.redis.password)
+#   AZURE_EVENTGRID_TOPIC_ENDPOINT, AZURE_EVENTGRID_TOPIC_KEY (if Event Grid is enabled)
+#   AZURE_SERVICEBUS_CONNECTION_STRING, AZURE_SERVICEBUS_ENTITY
+# Prefer a mounted volume or Blob for storage root, not a local F: path:
 #   STORAGE_ROOT=/data/storage
 # =============================================================================
 spring:

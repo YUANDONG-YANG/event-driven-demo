@@ -1,4 +1,4 @@
 /**
- * Event Grid 自定义主题发布客户端配置与演示 HTTP 接口。
+ * Event Grid custom topic publisher configuration and demo HTTP endpoints.
  */
 package com.demo.azure.eventgrid;

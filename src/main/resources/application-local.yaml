@@ -1,13 +1,13 @@
 # =============================================================================
-# Profile: local — 本机开发（默认数据源 H2；可用环境变量切到 Docker PostgreSQL）
+# Profile: local — local development (default datasource H2; use env vars for Docker PostgreSQL)
 # =============================================================================
-# Docker PostgreSQL + Redis 示例：
+# Docker PostgreSQL + Redis example:
 #   set SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/apply_alberta
 #   set SPRING_DATASOURCE_USERNAME=admin
 #   set SPRING_DATASOURCE_PASSWORD=admin
-# （不设则使用下方 H2 内存库）
+# (If unset, the in-memory H2 datasource below is used.)
 #
-# 端到端模拟（另加 profile）：local,e2e 或 local,e2e-azure（见本文件后半段 --- 分隔文档）
+# End-to-end simulation (additional profiles): local,e2e or local,e2e-azure (see --- sections below)
 # =============================================================================
 spring:
   config:
@@ -30,8 +30,8 @@ spring:
         jdbc:
           time_zone: UTC
 
-# GET /api/review；本地 storage 由 WatchService 监听，非云端 Event Grid。
-# storage 根目录默认 F: 工程路径，可用 STORAGE_ROOT 覆盖。
+# GET /api/review; local storage is watched via WatchService, not cloud Event Grid on disk.
+# Default storage root is the project path below; override with STORAGE_ROOT.
 demo:
   storage:
     root: ${STORAGE_ROOT:F:/demo/vibe_coding/src/main/resources/storage}
@@ -52,9 +52,9 @@ demo:
 
 ---
 # =============================================================================
-# Profile: e2e（与 local 同时使用：spring.profiles.active=local,e2e）
-# 捷径：发 Event Grid + 直连 Service Bus → 消费 → DB
-# 需：AZURE_EVENTGRID_TOPIC_*、AZURE_SERVICEBUS_CONNECTION_STRING、AZURE_SERVICEBUS_ENTITY
+# Profile: e2e (use with local: spring.profiles.active=local,e2e)
+# Shortcut: publish Event Grid + send directly to Service Bus -> consume -> DB
+# Requires: AZURE_EVENTGRID_TOPIC_*, AZURE_SERVICEBUS_CONNECTION_STRING, AZURE_SERVICEBUS_ENTITY
 # =============================================================================
 spring:
   config:
@@ -72,8 +72,8 @@ demo:
 
 ---
 # =============================================================================
-# Profile: e2e-azure（与 local 同时使用：spring.profiles.active=local,e2e-azure）
-# 更接近云上：只发 Event Grid；Service Bus 仅由门户「事件订阅」投递；不要与 e2e 同时启用
+# Profile: e2e-azure (use with local: spring.profiles.active=local,e2e-azure)
+# Closer to cloud: publish Event Grid only; Service Bus receives via Portal event subscription only; do not enable with e2e
 # =============================================================================
 spring:
   config:

@@ -1,4 +1,4 @@
 /**
- * 与 Azure 流水线无直接耦合的 Web 层（如学习笔记 API）。
+ * Web layer not directly coupled to the Azure pipeline (e.g. study notes API).
  */
 package com.demo.azure.web;

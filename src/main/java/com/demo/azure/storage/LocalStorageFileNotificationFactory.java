@@ -9,8 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 将 {@link StorageFileDetectedEvent} 转为与 {@link com.demo.azure.ingest.StorageFileNotificationPayload} 字段一致的数据结构，
- * 供 Event Grid（CloudEvent data）与 Service Bus（JSON 正文）分别使用，避免两处手写重复 map。
+ * Maps {@link StorageFileDetectedEvent} to the same field shape as {@link com.demo.azure.ingest.StorageFileNotificationPayload}
+ * for Event Grid (CloudEvent data) and Service Bus (JSON body), avoiding duplicate hand-built maps.
  */
 @Component
 public class LocalStorageFileNotificationFactory {

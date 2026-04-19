@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 /**
- * 从 Service Bus 消息（关联 ID 与 JSON 正文）解析链路 traceId；供消费入口与落库逻辑共用，避免重复实现。
+ * Resolves pipeline {@code traceId} from Service Bus correlation id and JSON body; shared by the consumer entry point
+ * and persistence logic to avoid duplication.
  */
 @Component
 public class ServiceBusTraceIdResolver {
