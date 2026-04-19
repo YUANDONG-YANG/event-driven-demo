@@ -1,0 +1,45 @@
+### E2E simulation: Event Grid -> Service Bus -> DB
+#
+# Shortcut: spring.profiles.active=local,e2e
+# Closer to Azure (Grid only; SB via Portal subscription): spring.profiles.active=local,e2e-azure
+#
+# Env: AZURE_EVENTGRID_TOPIC_ENDPOINT, AZURE_EVENTGRID_TOPIC_KEY,
+#      AZURE_SERVICEBUS_CONNECTION_STRING, AZURE_SERVICEBUS_ENTITY=<queue>
+# Portal (e2e-azure): Event Subscription on topic -> same queue as ENTITY.
+# After app is UP: add a NEW xml under storage/2026-04-18/ (see ORD-*.sample.xml)
+# GET /api/ingest/storage-events
+
+### Study notes (no Azure)
+GET http://localhost:8080/api/review
+
+### OpenAPI JSON
+GET http://localhost:8080/api-docs
+
+### Swagger UI
+# http://localhost:8080/swagger-ui.html
+
+### Storage info (date folders, watch root)
+GET http://localhost:8080/api/storage/info
+
+### Create virtual order XML (saved under today's date folder)
+POST http://localhost:8080/api/storage/virtual-orders
+Content-Type: application/json
+
+{
+  "amount": 199.5,
+  "userName": "Jane Doe",
+  "phone": "+1-555-0100",
+  "paymentMethod": "CreditCard"
+}
+
+
+### Last ingested rows (PostgreSQL, after Service Bus consumer persists)
+GET http://localhost:8080/api/ingest/storage-events
+
+### Event Grid sample publish (requires demo.azure.event-grid.enabled=true and topic config)
+POST http://localhost:8080/api/event-grid/publish-sample
+
+#
+# Maven with debug port 5005, then attach "Attach: Remote (5005)":
+#   mvn spring-boot:run -Pdebug
+#

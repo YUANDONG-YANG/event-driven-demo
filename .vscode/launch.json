@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug: Spring Boot (EventGridServiceBusApplication)",
+      "request": "launch",
+      "mainClass": "com.demo.azure.EventGridServiceBusApplication",
+      "projectName": "eventgrid-servicebus-review",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "java",
+      "name": "Attach: Remote (5005)",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005
+    }
+  ]
+}

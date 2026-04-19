@@ -1,0 +1,28 @@
+# Shared settings. Environment-specific: application-local.yaml (profile: local) / application-cloud.yaml (profile: cloud)
+# Activate: spring.profiles.active=local   (default below)   |   cloud
+server:
+  port: 8080
+
+spring:
+  application:
+    name: eventgrid-servicebus-review
+  profiles:
+    default: local
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{traceId:-}] %logger{40} - %msg%n"
+  level:
+    com.azure: INFO
+    com.demo.azure.storage: INFO
+    com.demo.azure.servicebus: INFO
+    com.demo.azure.ingest: INFO
+    com.demo.azure.trace: INFO

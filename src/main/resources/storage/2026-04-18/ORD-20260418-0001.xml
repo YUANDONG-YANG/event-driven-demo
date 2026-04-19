@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<VirtualOrder>
+  <orderNo>ORD-20260418-0001</orderNo>
+  <amount>199.00</amount>
+  <userName>Jane Doe</userName>
+  <phone>+1-555-0100</phone>
+  <orderDate>2026-04-18</orderDate>
+  <paymentMethod>CreditCard</paymentMethod>
+</VirtualOrder>

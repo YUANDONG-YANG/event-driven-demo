@@ -1,0 +1,52 @@
+# =============================================================================
+# Profile: cloud — Azure 或其它部署环境（依赖环境变量 / Key Vault 注入）
+# =============================================================================
+# 启动示例：spring.profiles.active=cloud
+# 必填（示例名，按实际密钥保管方式配置）：
+#   SPRING_DATASOURCE_URL / USERNAME / PASSWORD
+#   REDIS_HOST（及密码若需要，另配 spring.data.redis.password）
+#   AZURE_EVENTGRID_TOPIC_ENDPOINT、AZURE_EVENTGRID_TOPIC_KEY（若启用 Grid）
+#   AZURE_SERVICEBUS_CONNECTION_STRING、AZURE_SERVICEBUS_ENTITY
+# 存储根路径建议指向挂载卷或仅使用 Blob，不用本机 F: 路径：
+#   STORAGE_ROOT=/data/storage
+# =============================================================================
+spring:
+  config:
+    activate:
+      on-profile: cloud
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:validate}
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: UTC
+
+demo:
+  storage:
+    root: ${STORAGE_ROOT:/data/storage}
+    watch-enabled: ${DEMO_STORAGE_WATCH_ENABLED:true}
+    ensure-today-folder-on-startup: true
+    forward-to-event-grid: ${DEMO_FORWARD_TO_EVENT_GRID:true}
+    forward-to-service-bus: ${DEMO_FORWARD_TO_SERVICE_BUS:true}
+  azure:
+    event-grid:
+      enabled: ${AZURE_EVENTGRID_ENABLED:true}
+      topic-endpoint: ${AZURE_EVENTGRID_TOPIC_ENDPOINT}
+      topic-key: ${AZURE_EVENTGRID_TOPIC_KEY}
+    service-bus:
+      enabled: ${AZURE_SERVICEBUS_ENABLED:true}
+      connection-string: ${AZURE_SERVICEBUS_CONNECTION_STRING}
+      entity-name: ${AZURE_SERVICEBUS_ENTITY}
+      subscription-name: ${AZURE_SERVICEBUS_SUBSCRIPTION:}
